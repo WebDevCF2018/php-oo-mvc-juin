@@ -20,5 +20,6 @@ if(empty($_GET)){
             $contenu[]= new Contenu($value);
         }
     }
-    var_dump($contenu);
+    // appel de la vue
+    require_once "View/index.html.php";
 }
