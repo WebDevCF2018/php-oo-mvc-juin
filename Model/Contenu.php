@@ -13,9 +13,10 @@ class Contenu
 
     // méthodes
 
-    // constructeur
+    // constructeur - reçois un tableau
     public function __construct(Array $datas)
     {
+        // hydratation
         $this->hydrate($datas);
     }
 
@@ -32,7 +33,7 @@ class Contenu
         }
     }
 
-    // Getters
+    // Getters - pour récupérer les valeurs hors de l'instance de cette classe
     public function getIdcontenu()
     {
         return $this->idcontenu;
@@ -53,7 +54,7 @@ class Contenu
         return $this->ladate;
     }
 
-    // Setters
+    // Setters pour modifier les valeurs hors de l'instance de cette classe
     public function setIdcontenu($idcontenu)
     {
         if(is_numeric($idcontenu)) {
