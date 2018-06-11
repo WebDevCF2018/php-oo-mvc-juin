@@ -28,7 +28,7 @@ class ConnectPDO
 
             }
 
-            return $this->connect;
+            return $this->getConnect();
 
         } catch (PDOException $e) {
 
@@ -38,4 +38,9 @@ class ConnectPDO
             die();// arrêt du script
         }
     }
+
+    public function getConnect(){
+        return $this->connect;
+    }
+
 }
