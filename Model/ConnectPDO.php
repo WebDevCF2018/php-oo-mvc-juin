@@ -28,6 +28,8 @@ class ConnectPDO
 
             }
 
+            return $this->connect;
+
         } catch (PDOException $e) {
 
             echo "Erreur: " . $e->getMessage();
