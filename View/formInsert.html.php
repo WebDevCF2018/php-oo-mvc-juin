@@ -10,7 +10,7 @@
     <li><a href="./">Accueil - listContenu()</a></li>
     <li><a href="?insert">Insérer</a></li>
 </ul>
-<h2>ContenuManager->getContenuById($id) : Read</h2>
+<h2>ContenuManager->create(Contenu $datas) : Create</h2>
 <?php if(isset($erreur)) echo "<h3>$erreur</h3>" ?>
 <form method="post" name="nom" action="">
     <!-- les noms des champs correspondent à ceux de la classe Contenu et donc des champs de la DB (table contenu) -->

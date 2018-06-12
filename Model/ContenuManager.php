@@ -84,4 +84,31 @@ class ContenuManager
         }
 
     }
+
+    /*
+     *
+     * methodes CRUD - Update
+     *
+     */
+
+    // n'accepte comme argument qu'un objet de type Contenu
+    public function update(Contenu $datas){
+
+        $create = $this->connexion->prepare("UPDATE contenu SET titre = :title, texte= :txt, ladate=:temps WHERE idcontenu = :id");
+
+        $create->bindValue(":id",$datas->getIdcontenu(),PDO::PARAM_INT);
+        $create->bindValue(":title",$datas->getTitre(),PDO::PARAM_STR);
+        $create->bindValue(":txt",$datas->getTexte(),PDO::PARAM_STR);
+        $create->bindValue(":temps",$datas->getLadate());
+
+        $create->execute();
+
+        if($create->rowCount()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 }
