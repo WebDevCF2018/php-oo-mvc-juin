@@ -41,12 +41,12 @@ class Contenu
 
     public function getTitre()
     {
-        return $this->titre;
+        return html_entity_decode($this->titre);
     }
 
     public function getTexte()
     {
-        return $this->texte;
+        return html_entity_decode($this->texte);
     }
 
     public function getLadate()
@@ -65,16 +65,26 @@ class Contenu
     public function setTitre(string $titre)
     {
         $this->titre = htmlspecialchars(strip_tags(trim($titre)),ENT_QUOTES);
+        if(empty($this->titre)){
+            die("Impossible d'insérer cet article");
+        }
     }
 
     public function setTexte(string $texte)
     {
         $this->texte = htmlspecialchars(strip_tags(trim($texte)),ENT_QUOTES);
+        if(empty($this->texte)){
+            die("Impossible d'insérer cet article");
+        }
     }
 
-    public function setLadate(string $ladate)
+    public function setLadate($ladate)
     {
-        $this->ladate = $ladate;
+        if(!empty($ladate)) {
+            $this->ladate = $ladate;
+        }else{
+            $this->ladate = date("Y-m-d H:i:s");
+        }
     }
 
 

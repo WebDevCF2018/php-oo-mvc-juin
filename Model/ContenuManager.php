@@ -58,4 +58,30 @@ class ContenuManager
             return false;
         }
     }
+
+    /*
+     *
+     * methodes CRUD - Create
+     *
+     */
+
+    // n'accepte comme argument qu'un objet de type Contenu
+    public function create(Contenu $datas){
+
+        $create = $this->connexion->prepare("INSERT INTO contenu (idcontenu,titre,texte,ladate) VALUES (?,?,?,?)");
+
+        $create->bindValue(1,$datas->getIdcontenu(),PDO::PARAM_INT);
+        $create->bindValue(2,$datas->getTitre(),PDO::PARAM_STR);
+        $create->bindValue(3,$datas->getTexte(),PDO::PARAM_STR);
+        $create->bindValue(4,$datas->getLadate());
+
+        $create->execute();
+
+        if($create->rowCount()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }
