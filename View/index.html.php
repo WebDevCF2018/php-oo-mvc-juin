@@ -15,7 +15,7 @@
 // si le contenu est un tableau
 if(is_array($contenu)){
     foreach ($contenu as $valeur){
-        echo "<h3><a href='?idcontenu={$valeur->getIdcontenu()}'>{$valeur->getTitre()}</a></h3>";
+        echo "<h3><a href='?idcontenu={$valeur->getIdcontenu()}'>{$valeur->getTitre()}</a> | <a href='?update={$valeur->getIdcontenu()}'>modifier</a> | supprimer</h3>";
         echo "<p>{$valeur->getTexte()}</p>";
         echo "<p>{$valeur->getLadate()}</p>";
         echo "<hr>";
