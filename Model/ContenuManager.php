@@ -19,6 +19,13 @@ class ContenuManager
         $this->connexion = $bdd->getConnect();
     }
 
+    /*
+     *
+     * methodes CRUD - Read
+     *
+     */
+
+
     // on récupère tous les éléments de la table contenu
     public function listContenu(){
 

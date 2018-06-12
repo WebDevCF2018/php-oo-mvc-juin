@@ -10,6 +10,7 @@
     <li><a href="./">Accueil - listContenu()</a></li>
     <li><a href="?insert">Insérer</a></li>
 </ul>
+<h2>ContenuManager->listContenu() : Read</h2>
 <?php
 // si le contenu est un tableau
 if(is_array($contenu)){
