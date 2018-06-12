@@ -62,14 +62,14 @@ if(isset($_GET['idcontenu'])&&is_numeric($_GET['idcontenu'])) {
 
     $id = (int) $_GET['update'];
 
+    // on récupère l'article que l'on veut modifier
+    $rempliForm = $ContenuManager->getContenuById($id);
+
+    // on le transforme en objet
+    $recup = new Contenu($rempliForm);
+
     // Si formulaire non envoyé
     if (empty($_POST)) {
-
-        // on récupère l'article que l'on veut modifier
-        $rempliForm = $ContenuManager->getContenuById($id);
-
-        // on le transforme en objet
-        $recup = new Contenu($rempliForm);
 
         // si on essaye de modifier un article qui n'existe pas/plus
         if(!$rempliForm) die("Vous essayez de modifier un article qui n'existe pas/plus");
@@ -79,6 +79,18 @@ if(isset($_GET['idcontenu'])&&is_numeric($_GET['idcontenu'])) {
 
     } else {
 
+        // on le transforme en objet
+        $recup = new Contenu($_POST);
+
+        // mise à jour de l'article
+        $modif = $ContenuManager->update($recup);
+
+        if($modif){
+            header("Location: ./?idcontenu={$recup->getIdcontenu()}");
+        }else{
+            $erreur = "Veuillez recommencer";
+            require_once "View/formUpdate.html.php";
+        }
     }
 
 /*
