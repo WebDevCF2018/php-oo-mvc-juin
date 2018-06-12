@@ -68,6 +68,9 @@ if(isset($_GET['idcontenu'])&&is_numeric($_GET['idcontenu'])) {
         // on récupère l'article que l'on veut modifier
         $rempliForm = $ContenuManager->getContenuById($id);
 
+        // on le transforme en objet
+        $recup = new Contenu($rempliForm);
+
         // si on essaye de modifier un article qui n'existe pas/plus
         if(!$rempliForm) die("Vous essayez de modifier un article qui n'existe pas/plus");
 
