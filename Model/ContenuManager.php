@@ -100,8 +100,11 @@ class ContenuManager
         $create->bindValue(":title",$datas->getTitre(),PDO::PARAM_STR);
         $create->bindValue(":txt",$datas->getTexte(),PDO::PARAM_STR);
         $create->bindValue(":temps",$datas->getLadate(),PDO::PARAM_STR);
-
-        $create->execute();
+        try {
+            $create->execute();
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
 
         if($create->rowCount()){
             return true;
