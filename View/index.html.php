@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
+    <script src="public/js/monJS.js"></script>
 </head>
 <body>
 <h1>Accueil</h1>
@@ -15,7 +16,7 @@
 // si le contenu est un tableau
 if(is_array($contenu)){
     foreach ($contenu as $valeur){
-        echo "<h3><a href='?idcontenu={$valeur->getIdcontenu()}'>{$valeur->getTitre()}</a> | <a href='?update={$valeur->getIdcontenu()}'>modifier</a> | supprimer</h3>";
+        echo "<h3><a href='?idcontenu={$valeur->getIdcontenu()}'>{$valeur->getTitre()}</a> | <a href='?update={$valeur->getIdcontenu()}'>modifier</a> | <a href='#' onclick='Delete({$valeur->getIdcontenu()}); return false;'>supprimer</a></h3>";
         echo "<p>{$valeur->getTexte()}</p>";
         echo "<p>{$valeur->getLadate()}</p>";
         echo "<hr>";

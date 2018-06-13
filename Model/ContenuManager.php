@@ -111,4 +111,17 @@ class ContenuManager
 
     }
 
+    /*
+    *
+    * methodes CRUD - Delete
+    *
+    */
+    public function deleteContenu(int $id){
+        $delete = $this->connexion->prepare("DELETE FROM contenu WHERE idcontenu=?");
+        $delete->bindValue(1,$id,PDO::PARAM_INT);
+        $delete->execute();
+        // la suppression a fonctionnée
+        return ($delete->rowCount())? true: false;
+    }
+
 }

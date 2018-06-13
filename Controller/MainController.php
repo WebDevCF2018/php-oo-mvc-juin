@@ -58,9 +58,9 @@ if(isset($_GET['idcontenu'])&&is_numeric($_GET['idcontenu'])) {
 /*
 * on veut modifier un article via son id
 */
-}elseif (isset($_GET['update'])&&is_numeric($_GET['update'])){
+}elseif (isset($_GET['update'])&&is_numeric($_GET['update'])) {
 
-    $id = (int) $_GET['update'];
+    $id = (int)$_GET['update'];
 
     // on récupère l'article que l'on veut modifier
     $rempliForm = $ContenuManager->getContenuById($id);
@@ -72,7 +72,7 @@ if(isset($_GET['idcontenu'])&&is_numeric($_GET['idcontenu'])) {
     if (empty($_POST)) {
 
         // si on essaye de modifier un article qui n'existe pas/plus
-        if(!$rempliForm) die("Vous essayez de modifier un article qui n'existe pas/plus");
+        if (!$rempliForm) die("Vous essayez de modifier un article qui n'existe pas/plus");
 
         // appel de la vue
         require_once "View/formUpdate.html.php";
@@ -85,12 +85,25 @@ if(isset($_GET['idcontenu'])&&is_numeric($_GET['idcontenu'])) {
         // mise à jour de l'article
         $modif = $ContenuManager->update($recup);
 
-        if($modif){
+        if ($modif) {
             header("Location: ./?idcontenu={$recup->getIdcontenu()}");
-        }else{
+        } else {
             $erreur = "Veuillez recommencer";
             require_once "View/formUpdate.html.php";
         }
+    }
+
+
+/*
+* delete
+*/
+}elseif (isset($_GET['delete'])&& ctype_digit($_GET['delete'])){
+
+    $lid = (int) $_GET['delete'];
+
+    $del = $ContenuManager->deleteContenu($lid);
+    if($del){
+        header("Location: ./");
     }
 
 /*
